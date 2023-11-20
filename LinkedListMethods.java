@@ -1,6 +1,6 @@
 import java.io.*;
 /*
- * Some sections of code may belong to others, most of this is for practice/notes purposes
+ * Some sections of code may belong to others, most of this is for personal practice/notes purposes
  */
 
 public class LinkedListMethods {
@@ -8,6 +8,7 @@ public class LinkedListMethods {
 }
 //iterative method
 //time complexity O(n)
+
 class LinkedList{
 
     static Node head;
@@ -47,7 +48,7 @@ class LinkedList{
         list.head = new Node(85);
         list.head.next = new Node(15);
         list.head.next.next = new Node(4);
-        list.head.next.next = new Node(20);
+        list.head.next.next.next = new Node(20);
 
         System.out.println("Given linked list");
         list.printList(head);
@@ -60,6 +61,7 @@ class LinkedList{
 
 
 }
+
 
 //reverse a linked list using recursion
 //divide list in two parts - first node and rest of list 
