@@ -1,0 +1,24 @@
+STACKS
+
+Linear data structure following a particular order in which the operations are performed
+Order may be LIFO(last in first out) or FILO(first in last out)
+Basic Operations:
+push() to insert an element into the stack 
+pop() to remove an element from the stack
+top() returns the top element of the stack
+isEmpty() returns true if stack is empty else false
+size() returns the size of the stack
+
+push() O(1) 
+pop() O(1)
+isEmpty() O(1)
+size() O(1)
+
+Fixed size stack: has a fixed size and can't grow or shrink dynamically.
+    If it's full and an attempt is made to add an element to it, an overflow error occurs.
+    If it's empty and an attempt is made to remove an element from it, an underflow error occurs.
+
+Dynamic size stack: can grow or shrink dynamically. 
+    When full, it automatically increases its size to accommodate the new element. 
+    When the stack is empty, it decreases its size. 
+    This type is implemented using a linked list. 
