@@ -1,0 +1,41 @@
+Common implementations:
+
+Hash-based set
+ * Represented as a hash table where each element
+ * in the set is stored in a bucket based on its hash code
+
+ Tree-based set
+ * Set represented as a binary search tree
+ * Each node in the tree represents an element in the set
+ * 
+
+Two categories:
+
+Unordered Set:
+* Using a hash table - keys hashed into indices of a hash table, 
+insertion is always randomized
+* operations are usually O(1), O(n) worst case
+
+
+Ordered Set:
+* common set data structure we're familiar with
+* uses balanced Binary Search Trees
+* Supports O(log n) lookups, insertions, and deletion operations
+
+Set:
+* Unique Values
+* Unordered Collection
+* Dynamic size
+* Iterate over set to retrieve the value 
+* Set operations like union, intersection, and difference
+* implemented using linked lists or trees
+
+OPERATIONS:
+* Insert an element
+* Check if an element is present
+* Remove an element
+* Find max/min element
+    - using begin/end iterators
+    - Python: max() and min()
+* Get the size of the set
+
