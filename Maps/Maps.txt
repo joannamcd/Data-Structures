@@ -1,0 +1,16 @@
+MAPS, DICTIONARY, HASH MAP, OR ASSOCIATIVE ARRAY
+
+Stores a collection of key-value pairs, where each key is associated with a single value
+
+HASH MAP
+Uses a hash fn to map keys to indices in an array 
+Takes key as input and produces index into the array where the value is stored.
+Avg O(1) for operations such as insertion and retrieval
+
+* MAPS
+- keys are unique, values can be duplicated
+- unordered collection
+- dynamic size
+- elements can be retrieved using their key
+- used for operations like adding, removing, and accessing key-value pairs
+- implemented using linked lists or trees
