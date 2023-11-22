@@ -1,0 +1,50 @@
+QUEUES
+
+Linear data structure that is open at both ends.
+FIFO: First in, first out.
+We can access both ends
+
+Like a waiting line. 
+HEAD: First entry, first to be removed.
+TAIL: last entry of the queue, most recently added.
+
+
+- Can be represented using an array or a linked list.
+
+ARRAY IMPLEMENTATION:
+Basic operations:
+- enqueue() inserts at the end of queue
+- dequeue() removes and returns element at the front
+- front() returns element at front
+- rear() returns element at end
+- isEmpty() 
+- isFull()
+- size()
+
+SIMPLE QUEUE:
+Most basic version. Linear queue. 
+Problems with isFull() if we pop from front 
+    and then rear reach to capacity
+
+CIRCULAR QUEUE:
+solves simple queue problems.
+last element is connected to the first element.
+memory utilized in better way. 
+add element at empty position using modulo capacity(%n)
+
+PRIORITY QUEUE
+arranges elements in a queue based on some priority 
+eg. element w highest value has priority - queue with decreasing order of values
+etc. 
+in predefined priority queue, C++ gives priority to highest value
+java gives priority to lowest value
+
+DEQUEUE aka DOUBLE ENDED QUEUE
+element can be inserted or removed from both ends of the queue 
+may not obey fifo 
+
+used in BREADTH FIRST SEARCH
+
+ARRAY IMPLEMENTATION:
+
+
