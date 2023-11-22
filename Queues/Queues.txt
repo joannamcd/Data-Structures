@@ -46,5 +46,14 @@ may not obey fifo
 used in BREADTH FIRST SEARCH
 
 ARRAY IMPLEMENTATION:
+max size must be defined prior
+enqueue: 
+check if queue is full or not
+if full, print overflow and exit
+if queue is not full, increment tail and add the element
 
+dequeue:
+check queue is empty or not
+if empty, print underflow and exit
+if not empty, print element at the head and increment head
 
