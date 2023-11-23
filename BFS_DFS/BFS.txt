@@ -1,0 +1,31 @@
+BREADTH FIRST SEARCH 
+
+-VERTEX BASED 
+to find the shortest path in the graph
+-uses QUEUE, follows FIFO  
+
+selects one vertex at a time when it is visited and marked 
+then its adjacent are visited and stored in the queue.
+Slower than DFS 
+
+Input:
+            A 
+           /  \
+          B    C 
+         /    / \
+        D    E   F
+
+Output:
+A, B, C, D, E, F 
+
+For each node, first, the node is visited and then its child nodes are put in a FIFO queue.
+Then the first node is popped out and then its child nodes are put in a FIFO queue 
+    and repeat until the queue becomes empty
+
+Main idea:
+Traverse all the nodes of a lower level before moving to any of the nodes of a higher level
+methods:
+- naive: find height of the tree and traverse each level and printing the nodes of that level
+- efficiently using a queue 
+
+

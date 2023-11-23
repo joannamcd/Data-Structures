@@ -1,0 +1,92 @@
+TREES
+
+- Represent and organize data in a way that is easy to navigate and search 
+- Collection of NODES that are connected by edges 
+    and has a hierarchical relationship b/t the NODES
+- Topmost NODE of the TREE is called the ROOT
+- NODES below it are called the CHILD NODES. 
+- Each NODE can have multiple CHILD NODES
+- CHILD NODES can also have their own CHILD NODES
+    forming a recursive structure
+- NON-LINEAR data structure
+
+
+Consists of a CENTRAL NODE, STRUCTURAL NODES, AND SUB-NODES 
+    which are connected via edges
+    "roots, branches, and leaves" connected with one another 
+
+                 A 
+              /     \
+            B         C
+          /   \     /   \
+        D      E   G      F
+       /        \        /
+      H          I      J
+     / \        / \    / \
+    K   L      M   N  O   P
+
+    A is the root 
+    A-C is an edge
+
+    B-D-E is a subtree
+    where B is a parent, D and E are siblings, and child nodes of B 
+
+    K, L, M, N, O, P are Leaf Nodes or External Nodes 
+
+    A, B are ancestor nodes of the node E  
+
+    A is at Level 0 
+    B, C are at Level 1
+    D, E, G, F are at Level 2
+    H, I, J are at Level 3
+    K, L, M, N, O, P are at Level 4
+
+Representation of a Node in Tree Data Structure
+    struct Node{
+        int data;
+        struct Node *first_child;
+        struct Node *second_child;
+        structu Node *third_child;
+        .
+        .
+        .
+        struct Node *nth_child;
+    }
+
+TYPES OF TREE DATA STRUCTURES:
+
+BINARY TREE:
+each node can have a maximum of two children linked to it. 
+common types: full, complete, balanced, and degenerate or pathological
+
+TERNARY TREE:
+each node has at most 3 child nodes
+usually distinguished as left, mid, and right
+
+N-ARY TREE OR GENERIC TREE:
+a collection of nodes where each node is a data structure,
+that consists of records and a list of references to its children
+duplicate references are NOT allowed. 
+Unlike the linked list, each node stores the address of multiple nodes
+
+
+BASIC OPERATION:
+- Create - create a tree in the data structure
+- Insert - inserts data in a tree
+- Search - searches specific data in a tree to check whether it is present or not 
+- Traversal:
+    Preorder - performing traveling a tree in a pre-order manner
+    In order - performing traveling a tree in a pre-order manner
+    Post-order - performing traveling a tree in a pre-order manner
+
+PROPERTIES:
+- Number of edges: if a tree has N nodes than it will have N-1 edges. 
+    Only one path from each node to any other node of the tree.
+- Depth of a node: len of the path from the root to that node.
+    each edge adds 1 unit of len. 
+    So, it is num of edges in the path from root to node
+- Height of a node: Len of the longest path from the node to a leaf node of the tree
+- Height of the tree: len of the longest path from the root of the tree to a leaf node of the tree
+- Degree of a node: total count of subtrees attached to that node.
+    degree of a leaf node = 0
+    degree of a TREE is the max degree of a node among all the nodes in the tree

@@ -1,0 +1,44 @@
+HEAP
+
+Operations:
+- Heapify: O(logN) 
+    a process of creating a heap from an array
+- Insertion: O(logN)
+    process to insert an element in existing heap time complexity O(log N)
+- Deletion: O(logN)
+    deleting the top element of the heap or the highest priority element
+    then organizing the heap and returning the element with time complexity O(log N)
+- Peek: to check or find the first(top) element of the heap
+- getMax (for max heap) or getMin(for min heap) O(1)
+- removeMin or removeMax
+
+Two types of heaps:
+1. Max-Heap: 
+    key present at the root node must be the greatest among the keys present at all of its children.
+    same property must be recursively true for all sub-trees in that binary tree
+- total # of comparisons required in max heap is according to height of the tree
+- height is always logN so time complexity would also be O(logN)
+
+2. Min-Heap:
+    key present at the root node must be minimum among the keys present at all of its children
+    same property must be recursively true for all sub-trees in that binary tree
+- height is always logN so time complexity would also be O(logN)
+
+
+PROPERTIES:
+
+complete binary tree:
+    -all levels of the tree are fully filled except possibly the last level, which is filled from left to right.
+    - this ensures that the tree is efficiently represented using an array 
+heap property:
+    -ensures that the minimum or maximum element is always at the root of the tree, according to the heap type
+parent-child relationship:
+    -the relationship b/t a parent node at index i and its children is given by these formulas:
+        left child at index 2i+1 and right child at 2i+2 for 0-based indexing of node numbers
+efficient insertion and removal:
+    -new elements are inserted @ next available position in the bottom-rightmost level
+        heap property is restored by comparing the element with its parent and swapping if necessary.
+    -removal of the root element involves replacing it with the last element and heapifying down.
+efficient access to extremal elements:
+    - the min or max element is always at the root of the heap, allowing constant-time access
+
