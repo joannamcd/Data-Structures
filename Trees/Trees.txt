@@ -1,0 +1,62 @@
+TREES
+
+- Represent and organize data in a way that is easy to navigate and search 
+- Collection of NODES that are connected by edges 
+    and has a hierarchical relationship b/t the NODES
+- Topmost NODE of the TREE is called the ROOT
+- NODES below it are called the CHILD NODES. 
+- Each NODE can have multiple CHILD NODES
+- CHILD NODES can also have their own CHILD NODES
+    forming a recursive structure
+
+
+Consists of a CENTRAL NODE, STRUCTURAL NODES, AND SUB-NODES 
+    which are connected via edges
+    "roots, branches, and leaves" connected with one another 
+
+                 A 
+              /     \
+            B         C
+          /   \     /   \
+        D      E   G      F
+       /        \        /
+      H          I      J
+     / \        / \    / \
+    K   L      M   N  O   P
+
+    A is the root 
+    A-C is an edge
+
+    B-D-E is a subtree
+    where B is a parent, D and E are siblings, and child nodes of B 
+
+    K, L, M, N, O, P are Leaf Nodes or External Nodes 
+
+    A, B are ancestor nodes of the node E  
+
+    A is at Level 0 
+    B, C are at Level 1
+    D, E, G, F are at Level 2
+    H, I, J are at Level 3
+    K, L, M, N, O, P are at Level 4
+
+Representation of a Node in Tree Data Structure
+    struct Node{
+        int data;
+        struct Node *first_child;
+        struct Node *second_child;
+        structu Node *third_child;
+        .
+        .
+        .
+        struct Node *nth_child;
+    }
+
+TYPES OF TREE DATA STRUCTURES:
+
+BINARY TREE:
+each node can have a maximum of two children linked to it. 
+
+TERNARY TREE:
+
+N-ARY TREE OR GENERIC TREE:
