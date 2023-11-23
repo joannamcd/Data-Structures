@@ -56,7 +56,24 @@ TYPES OF TREE DATA STRUCTURES:
 
 BINARY TREE:
 each node can have a maximum of two children linked to it. 
+common types: full, complete, balanced, and degenerate or pathological
 
 TERNARY TREE:
+each node has at most 3 child nodes
+usually distinguished as left, mid, and right
 
 N-ARY TREE OR GENERIC TREE:
+a collection of nodes where each node is a data structure,
+that consists of records and a list of references to its children
+duplicate references are NOT allowed. 
+Unlike the linked list, each node stores the address of multiple nodes
+
+
+BASIC OPERATION:
+- Create - create a tree in the data structure
+- Insert - inserts data in a tree
+- Search - searches specific data in a tree to check whether it is present or not 
+- Traversal:
+    Preorder - performing traveling a tree in a pre-order manner
+    In order - performing traveling a tree in a pre-order manner
+    Post-order - performing traveling a tree in a pre-order manner
