@@ -1,0 +1,119 @@
+Info from: https://www.youtube.com/watch?v=Hoixgm4-P4M 
+
+QUICK SORT:
+- recursive 
+- pivot: one of the items in the array that meets one of these conditions:
+1. correct postion in final, sorted array
+2. items to the left are smaller 
+3. items to the right are larger 
+
+2 6 5 3 8 7 1 0
+choose a pivot - 3 - move to end of array 
+2 6 5 0 8 7 1 3
+look for 2 items: 
+1. item starting from left that is larger than pivot: 6
+2. item starting from right that is smaller than pivot: 1
+SWAP: 
+2 1 5 0 8 7 6 3 
+repeat: 
+now 5 is item from left and 0 is item from right 
+2 1 0 5 8 7 6 3
+item from left 5 index 4 -  is greater than 
+item from right 0 - index 3 
+So we stop. 
+Swap item from left with pivot 
+2 1 0 3 8 7 6 5
+3, our pivot, is now in its correct spot. 
+
+HOW TO CHOOSE PIVOT? 
+divides array in half, as close as possible. 
+
+1 method: MEDIAN-OF-THREE 
+first, middle, last elements of array 
+sort properly and choose middle as pivot. 
+
+
+PSEUDOCODE:
+
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+        
+        def quicksort(nums, lo, hi):
+            if lo < hi:
+                partition_resting_point = partition(nums, lo, hi)
+                quicksort(nums, lo, partition_resting_point - 1)
+                quicksort(nums, partition_resting_point + 1, hi)
+            
+        def partition(nums, lo, hi):
+            //choosing random pivot index
+            pivotIdx = random.randint(lo, hi)
+            //move pivot to end, swap with item currently there
+            nums[pivotIdx], nums[hi] = nums[hi], nums[pivotIdx]
+            //save pivot value 
+            pivot = nums[hi]
+            
+            //left index is the leftmost num 
+            l_idx = lo
+            //right index is the rightmost num that isn't pivot
+            r_idx = hi-1
+            while l_idx <= r_idx:
+                //adjust low index +1 if not lower than pivot
+                if nums[l_idx] <= pivot:
+                    l_idx+=1
+                //adjust right index -1 if not greater than pivot
+                elif nums[r_idx] >= pivot:
+                    r_idx-=1
+                //now swap the two appropriate numbers
+                //and increase the indices 
+                else:
+                    nums[l_idx], nums[r_idx] = nums[r_idx], nums[l_idx]
+                    l_idx+=1
+                    r_idx-=1
+            //now left index is greater than right index 
+            //swap left index with pivot 
+            nums[l_idx], nums[hi] = nums[hi], nums[l_idx]
+            //return pivot which is now in correct position 
+            return l_idx
+        
+        quicksort(nums, 0, len(nums)-1)
+        return nums
+
+    TIME COMPLEXITY:
+
+    worst case: O(n^2)
+    avg case: O(nlogn) - if pivot is chosen properly 
+
+ANOTHER VERSION:
+
+def partition(list, low, high):
+    i = low
+    pivot = list[high]
+
+    for j in range(low, high):
+        if list[j] <= pivot:
+            list[i], list[j] =  list[j], list[i]
+            i += 1
+
+    list[i], list[high] = list[high] ,list[i]
+
+    return i
+
+
+def quick_sort(list, low, high):
+    if low < high:
+        partition_index = partition(list, low, high)
+        quick_sort(list, low, partition_index - 1)
+        quick_sort(list, partition_index + 1, high)
+
+
+def main():
+    list = [99, 0, 5, 20, 123, 0, -1, 72, 21, 22, 13, 8, 7, 67, 29, 1, 2, 4]
+    quick_sort(list, 0, len(list) - 1)
+    print(list)
+
+    list = [3, 9, 2, 1]
+    quick_sort(list, 0, len(list) - 1)
+    print(list)
+
+main()
+
