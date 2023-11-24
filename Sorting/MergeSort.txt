@@ -1,0 +1,60 @@
+Info from: https://www.youtube.com/watch?v=4VqmGXwpLqc 
+
+MERGE SORT:
+
+usually done recursively
+divide and conquer
+continuously divide in half - DIVIDE STEP
+    until left with the individual items
+in code: done in a diff order bc of recursion
+compare items, merge them and compare in temp arrays 
+merge smaller arrays into larger one - inserting in correct order
+
+O(nlogn) worst case
+- look at merge step 
+    have to visit n items 
+- log n comes from maximum height of a binary tree we create 
+
+
+
+PSEUDOCODE:
+
+RECURSIVE PART: break into arrays
+
+mergesort(array a)
+    if(n==1)
+        return a 
+    
+    arrayOne = a[0] ... a[n/2]
+    arrayTwo = a[n/2+1] ... a[n]
+
+    arrayOne = mergeSort(arrayOne)
+    arrayTwo = mergsort(arrayTwo)
+    
+    return merge(arrayOne, arrayTwo)
+
+
+MERGE:
+
+merge(array a, array b)
+    array c 
+    
+    while(a and b have elements)
+        if(a[0] > b[0])
+            add b[0] to end of c 
+            remove b[0] from b 
+        else 
+            add a[0] to the end of c 
+            remove a[0] from a 
+    
+    //now either a or b is empty 
+
+    while(a has elements)
+        add a[0] to the end of c 
+        remove a[0] from a 
+    
+    while(b has elements)
+        add b[0] to the end of c 
+        remove b[0] from b 
+
+    return c 
