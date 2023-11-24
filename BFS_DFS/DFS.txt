@@ -37,6 +37,11 @@ Output:
 A, B, D, C, E, F
 
 
+Add the visited Node to stack.
+Pop the Node from stack, explore its children and add them to stack.
+Explore all the nodes till stack becomes empty.
+Here we are going to see pre-order traversal of the below tree using stack. Same technique can be used to perform both inorder and post-order traversals just by changing the order of visiting nodes.
+
 public void DFSInOrder(TreeNode root) {
     Stack<TreeNode> stack = new Stack<>();
     TreeNode current = root;
@@ -54,3 +59,16 @@ public void DFSInOrder(TreeNode root) {
         }
     }
 }
+
+When to use:
+Few problems can be solved using both BFS and DFS.
+BFS can be helpful when,
+• We want to find the shortest path from any source to destination.
+• You want to find there exist a path between two nodes.
+• Bipartite Graph
+• If you feel the solution exists in fewer levels instead of going deep..
+
+DFS can be helpful when,
+• We want to exhaust all possibilities, and check which is best.
+• We need to count all possible paths from source to destination.
+• Backtracking
