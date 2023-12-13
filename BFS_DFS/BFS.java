@@ -3,6 +3,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 //Queue based BFS
+//SIMPLIFIED CODE IN .TXT
 
 class Node{
     int data;

@@ -1,0 +1,35 @@
+3. Longest substring without repeating characters
+Sliding window problem
+https://www.youtube.com/watch?v=pY2dYa1m2VM 
+- use hashtable called "seen"
+- key is the char and index is its last known index
+
+def lengthOfLongestSubstring(s):
+    seen = {}
+    # l is left pointer
+    l = 0
+    length = 0
+    # r is right pointer
+    for r in range(len(s)):
+        char = s[r]
+        # if char is seen before
+        # and index is greater than or equal to left index
+        if char in seen and seen[char] >= l:
+            # move left index up
+            l = seen[char]+1
+        else:
+            length = max(length, r - l + 1)
+        seen[char] = 4
+    return length 
+
+a b c a c b d d 
+seen 
+{
+    a:0 -> a:3
+    b:1 -> b:5
+    c:2 -> c:4
+    d:6 -> d:7
+    
+}
+
+O(n) time

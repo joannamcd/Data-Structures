@@ -1,0 +1,33 @@
+reference: https://www.youtube.com/watch?v=Q9PIxaNGnig
+
+TOPOLOGICAL SORT:
+-given a directed acyclic graph, a linear ordering of vertices such that
+    for every directed edge (u,v) vertex u comes before v in the ordering
+    (DAG: directed graph that does not contain any cycles)
+
+(directions) A->B A->C B->D C->D D->E
+        A 
+      /   \
+     B     C
+     |    /
+       D 
+        \ 
+          E 
+
+Topological sort is not unique 
+    A B C D E 
+    A C B D E 
+
+Applications:
+- build systems (eclipse, sublime text) - top. sort to know which library should be picked first
+- advanced-packaging tool (apt-get)
+- task scheduling
+- pre-requisite problems - courses 
+
+Empty stack 
+vertices - unvisited vs visited 
+
+time complexity: 
+O(V+E) 
+V are vertices 
+E are edges 

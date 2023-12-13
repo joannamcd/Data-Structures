@@ -29,3 +29,33 @@ methods:
 - efficiently using a queue 
 
 
+public void BFS(TreeNode root)
+    {
+        Queue<Integer> queue = new LinkedList<>();
+         queue.add(root);
+        while (!queue.isEmpty())
+        {
+            int size = queue.size();
+             for (int i=0;i<size;i++)
+			 {
+				TreeNode currentNode = queue.poll();
+                if(currentNode.left!=null)  queue.add(currentNode.left);
+				if(currentNode.right!=null)  queue.add(currentNode.right);
+				System.out.print(currentNode.val);
+              }
+         }
+   }
+
+
+When to use:
+Few problems can be solved using both BFS and DFS.
+BFS can be helpful when,
+• We want to find the shortest path from any source to destination.
+• You want to find there exist a path between two nodes.
+• Bipartite Graph
+• If you feel the solution exists in fewer levels instead of going deep..
+
+DFS can be helpful when,
+• We want to exhaust all possibilities, and check which is best.
+• We need to count all possible paths from source to destination.
+• Backtracking

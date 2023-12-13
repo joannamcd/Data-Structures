@@ -1,0 +1,74 @@
+DEPTH FIRST SEARCH
+
+-EDGE BASED
+uses the STACK data structure 
+
+TWO STAGES:
+1. first, visited vertices are pushed into the stack (LIFO)
+2. second, if there are no vertices then visited vertices are popped
+
+Inorder Traversal 
+1. Traverse the left subtree, i.e. call Inorder (left -> subtree)
+2. Visit the root 
+3. Traverse the right subtree, i.e. call Inorder (right -> subtree)
+
+Preorder Traversal
+1. Visit the root
+2. Traverse the left subtree, i.e., call Preorder(left -> subtree)
+3. Traverse the right subtree, i.e., call Preorder(right -> subtree)
+- Used to create a copy of the tree. 
+
+Postorder Traversal
+1. Traverse the left subtree, i.e., call Postorder(left -> subtree)
+2. Traverse the right subtree, i.e., call Postorder(right -> subtree)
+3. Visit the root
+- Used to delete the tree 
+- Useful to get the postfix expression of an expression tree
+
+PREORDER:
+Input:
+            A 
+           /  \
+          B    C 
+         /    / \
+        D    E   F
+
+Output:
+A, B, D, C, E, F
+
+
+Add the visited Node to stack.
+Pop the Node from stack, explore its children and add them to stack.
+Explore all the nodes till stack becomes empty.
+Here we are going to see pre-order traversal of the below tree using stack. Same technique can be used to perform both inorder and post-order traversals just by changing the order of visiting nodes.
+
+public void DFSInOrder(TreeNode root) {
+    Stack<TreeNode> stack = new Stack<>();
+    TreeNode current = root;
+    stack.push(root);
+    while(!stack.isEmpty()) {
+        while(current.left != null) {
+            current = current.left;                
+            stack.push(current);                
+        }
+        current = stack.pop();
+        System.out.print(current.value);
+        if(current.right != null) {
+            current = current.right;                
+            stack.push(current);
+        }
+    }
+}
+
+When to use:
+Few problems can be solved using both BFS and DFS.
+BFS can be helpful when,
+• We want to find the shortest path from any source to destination.
+• You want to find there exist a path between two nodes.
+• Bipartite Graph
+• If you feel the solution exists in fewer levels instead of going deep..
+
+DFS can be helpful when,
+• We want to exhaust all possibilities, and check which is best.
+• We need to count all possible paths from source to destination.
+• Backtracking
