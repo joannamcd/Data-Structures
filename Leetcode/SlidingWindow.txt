@@ -1,0 +1,171 @@
+https://youtu.be/XfSgQvKfcys?si=lV74qICyXgE3mbuo
+Two types:
+- Fixed window size
+- Dynamic window size
+
+Fixed:
+#643 Maximum Average Subarray I 
+ - keep track of first sum calculated
+ - subtract starting value and then add the value at index after curr end of window
+    - moving window up
+- keep track of index at start of window and end 
+
+Golang:
+
+func main(){
+    k := 4
+    nums := []int{1, 12, -5, -6, 50, 3}
+    answer := findMaxAverageSlidingWindow(nums,k)
+    fmt.Println(answer)
+}
+
+func findMaxAverageSlidingWindow(nums []int, k int) float64 {
+    var windowSum int
+    var start int
+    max := math.Inf(-1)
+
+    for end := 0; end < len(nums); end++{
+        //end starts at first index of the nums array
+        windowSum += nums[end]
+
+        //getting curr window size
+        if (end-start + 1 ==k){
+            //calculate avg for window 
+            max = math.Max(max, float64(windowSum)/float64(k))
+            windowSum -= nums[start]
+            start += 1
+        }
+    }
+    return max
+}
+//code over
+
+nums = [1, 12, -5, -6, 50, 3]
+k = 4 
+
+starting with windowSum and start = 0
+every iteration is end of our window
+start at index 0 and arrive at len k 
+
+index end 0: 1
+windowSum + 1 = 1
+curr window size not = k yet 
+continue loop 
+
+index end 1: 12
+add 12 to windowSum 1 = 13
+curr window size not = k yet (end-start+1) (2-1+1) = 2
+
+index end 2: -5
+add -5 to windowSum 13 = 8
+window size 3 - not 4
+
+index end 3: -6
+add -6 to windowSum 8 = 2
+window size is equal to k (end-start+1) index 3-0 = 3+1 = 4
+calculate avg: 2/4 = 0.5 
+0.5 > - infinity 
+new max is 0.5
+
+NOW subtract start from windowSum 
+2-1 = 1 = windowSum
+start += 1 //move start up one index
+
+index end 4: -50
+back through loop - end incremented
+start at 12, end at 50 
+add 50 to windowSum = 51
+51/4 = 12.75
+12.75 > 0.5 -> max rn is 12.75
+subtract start (12) from windowSum: 51-12= 39
+start is 2
+
+end incremented: 3, index 5
+39 + 3 = 42
+42/4 = 10.5
+12.75 > 10.5
+
+leave max as 12.75
+
+loop, end = len(nums)
+return max, 12.75
+
+solution: O(n)
+for loop iterates through every element of nums 
+ignore constants, only pay attention to the O(n)
+
+904. Fruit Into Baskets:
+uses Dynamically sized sliding window (in leetcode patterns list)
+Problem explanation:
+fruits -> trees
+array of trees 
+two baskets 
+can hold an unlimited amount of fruit
+each can only hold one type of fruit
+there's a man holding those two baskets 
+can't pass a tree without picking from it 
+if he reaches a fruit he can't collect he has to stop. 
+When starting from the first index of our array the man can only pick 2 fruits 
+max num of fruit that can be picked 
+can start from any tree of our choice 
+
+
+
+pear tree = 1 
+orange tree = 2
+apple tree = 3
+
+[1, 2, 3, 2, 2]
+expand window until we cannot adhere to constraints
+
+index 1: basket for fruit type 1 
+index 2: basket for fruit type 2
+at index 3, can't add fruit type 3 
+num is curr window size = 2
+
+Code: 
+
+Golang:
+package main
+import(
+    "fmt"
+    "math"
+)
+
+func main(){
+    trees := []int{1,2,3,2,2}
+    answer := fruitIntoBasket(trees)
+    fmt.Println(answer)
+}
+
+func fruitIntoBasket(trees []int) int {
+    //int is fruit type, bool is whether or not we have a basket for that type
+    treeTypesMap := make(map{[int]bool})
+    var max int 
+    var start int 
+
+    //end is end index, treeType is value at that index
+    for end, treeType := range trees {
+        if len(treeTypesMap) < 2 && !treeTypesMap[treeType] {
+            treeTypesMap[treeType] = true
+            max = int(math.Max(float64(max), float64(end-start+1)))
+        }
+        else if treeTypesMap[treeType]{
+            max = int(math.Max(float64(max), float64(end-start+1)))
+        }
+        else{
+            //arrived at new fruit type
+            treeTypesMap = make(map[int]bool)
+            treeTypesMap[trees[end-1]] = true
+            treeTypesMap[treeType] = true
+            start = end - 1
+
+            for trees[start] == trees[start-1]{
+                start--
+                //decrement our start 
+            }
+            max = int(math.Max(float64(max), float64(end-start+1)))
+        }
+    }
+    return int(max)
+}
