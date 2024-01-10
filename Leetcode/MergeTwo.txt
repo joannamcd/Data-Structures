@@ -1,0 +1,30 @@
+https://www.youtube.com/watch?v=E5XXiY6QnAs
+
+#class ListNode(object):
+#   def __init__(self, val=0, next=None):
+#       self.val = val
+#       self.next = next 
+
+def mergeTwoLists(list1, list2):
+    head = ListNode()
+    current = head
+    while list1 and list 2:
+        if list1.val > list2.val:
+            current.next = list1
+            list1 = list1.next
+        else:
+            current.next = list2
+            list2 = list2.next 
+        current = current.next
+    current.next = list1 or list2
+    return head.next 
+
+while list1 and list2 != None 
+check if list1 val is greater than list2 val 
+if so, curr.next pointer is set at list1 
+list1 pointer is set to list1.next 
+else:
+    curr.next pointer is set at list2 
+    list2 pointer is set to list2.next 
+current set to current.next 
+outside of while loop, set current.next to whichever list is not None
