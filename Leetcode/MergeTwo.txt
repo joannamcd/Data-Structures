@@ -9,7 +9,7 @@ def mergeTwoLists(list1, list2):
     head = ListNode()
     current = head
     while list1 and list 2:
-        if list1.val > list2.val:
+        if list1.val < list2.val:
             current.next = list1
             list1 = list1.next
         else:

@@ -19,7 +19,8 @@ def lengthOfLongestSubstring(s):
             l = seen[char]+1
         else:
             length = max(length, r - l + 1)
-        seen[char] = 4
+        seen[char] = r
+        
     return length 
 
 a b c a c b d d 
