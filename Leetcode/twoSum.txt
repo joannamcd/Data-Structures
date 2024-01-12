@@ -1,8 +1,40 @@
+1. TwoSum I Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+You can return the answer in any order.
+
 def twoSum(nums, target):
     seen = {}
     for i in range(len(nums)):
-        diff = target - nums[1]
+        diff = target - nums[i]
         if diff in seen:
             return [seen[diff],i]
         else:
             seen[nums[i]] = i
+
+
+1.67 TwoSum II 
+
+Given a 1-indexed array of int numbers that is already sorted in non-decreasing order, 
+find two numbers such that they add up to a specific target number.
+Let thse two numbers be numbers[index1] and numbers[index2] where 1 <= first <= second <= numbers.length 
+
+Two-pointer pattern 
+
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        # two pointers 
+        left = 0
+        right = len(numbers) -1
+        ans = []
+        for i in range(len(numbers)):
+            val = numbers[left] + numbers[right] 
+            if val == target:
+                ans.append(left+1)
+                ans.append(right+1)
+                return ans
+            elif val < target:
+                left +=1
+            elif val > target:
+                right -=1
