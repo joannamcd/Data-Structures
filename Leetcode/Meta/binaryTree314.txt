@@ -1,0 +1,38 @@
+314. Binary Tree Vertical Order Traversal
+
+Given the root of a binary tree, return the vertical order traversal of its nodes' values. (i.e., from top to bottom, column by column).
+If two nodes are in the same row and column, the order should be from left to right.
+
+class Solution:
+    def verticalOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+
+        #[3, 9,  8,   4, 0, 1,  7,  2,  5]
+        #[0, -1, +1, -2, 0, 0, +2, +1, -1]
+
+        if not root: return []
+
+        valCol = []
+        q = [[root, 0]] #node and col index
+        minColIndex = 0
+        maxColIndex = 0
+
+        while q:
+            aNode, colIdx = q.pop(0)
+            minColIdx = min(colIdx, minColIdx)
+            maxColIdx = max(colIdx, maxColIdx)
+            valCol.append([aNode.val, colIdx])
+
+            if aNode.left:
+                q.append([aNode.left, colIdx-1])
+            if aNode.right:
+                q.append([aNode.right, colIdx+1])
+
+            #[[3,0], [9, -1], [8 +1]...]
+
+        nColumns = maxColIdx - minColIdx + 1
+        ans = [[] for _ in range(nColumns)]
+
+        while valCol:
+            val, colIdx = valCol.pop(0)
+            ans[colIdx-minColIdx].append(val)
+        return ans

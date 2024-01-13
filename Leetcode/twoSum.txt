@@ -14,7 +14,7 @@ def twoSum(nums, target):
             seen[nums[i]] = i
 
 
-1.67 TwoSum II 
+167 TwoSum II 
 
 Given a 1-indexed array of int numbers that is already sorted in non-decreasing order, 
 find two numbers such that they add up to a specific target number.

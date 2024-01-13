@@ -1,0 +1,30 @@
+408. Valid Word Abbreviation
+
+A string can be abbreviated by replacing any number of non-adjacent, non-empty substrings with their lengths. 
+The lengths should not have leading zeros.
+
+two pointers
+class Solution:
+    def validWordAbbreviation(self, word: str, abbr: str) -> bool:
+        word_ptr = abbr_ptr = 0
+
+        while word_ptr < len(word) and abbr_ptr < len(abbr):
+            if abbr[abb_ptr].isdigit():
+                steps = 0
+
+                if abbr[abb_ptr] == "0"
+                    return False
+                
+                while abbr_ptr < len(abbr) and abbr[abbr_ptr].isdigit():
+                    steps = steps * 10 + int(abbr[abbr_ptr])
+
+                    abbr_ptr += 1
+                word_ptr += steps 
+            else:
+                if word[word_ptr] != abbr[abb_ptr]:
+                    return False
+                word_ptr += 1
+                abbr_ptr += 1
+        return word_ptr == len(word) and abbr_ptr == len(abbr) #whether or not we abbreviated everything
+
+        #O(N)
