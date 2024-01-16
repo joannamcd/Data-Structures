@@ -1,0 +1,42 @@
+339. Nested List Weight Sum
+You are given a nested list of integers nestedList. Each element is either an integer or a list whose elements may also be integers or other lists.
+
+The depth of an integer is the number of lists that it is inside of. For example, the nested list [1,[2,2],[[3],2],1] has each integer's value set to its depth.
+
+Return the sum of each integer in nestedList multiplied by its depth.
+
+Example: 
+Input: nestedList = [[1,1],2,[1,1]]
+Output: 10
+Explanation: Four 1's at depth 2, one 2 at depth 1. 1*2 + 1*2 + 2*1 + 1*2 + 1*2 = 10.
+
+BFS 
+make queue out of nestedList 
+pop one by one 
+pop first, [1,1] 2nd level -> back of queue 
+pop 2, int so we add it times depth to sol. 1*2 = 2
+pop last [1,1] also 2nd level -> back of queue 
+
+depth = 2
+queue has 4 level 2 1s. 2+2+2+2 = 8 
+8+2 = 10
+
+class Solution:
+    def depthSum(self, nestedList: List[NestedInteger]) -> int: 
+        depth = 1 
+        res = 0
+        queue = collections.deque(nestedList)
+
+        while queue:
+            for _ in range(len(queue)):
+                cur = queue.popleft()
+
+                if cur.isInteger():
+                    res += cur.getInteger() * depth 
+                
+                else:
+                    queue.extend(cur.getList())
+            depth += 1
+        return result
+
+        #BFS usually O(N) time and O(N) space complexity

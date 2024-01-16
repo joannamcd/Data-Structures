@@ -1,0 +1,52 @@
+
+l = 0
+r = 2
+
+curr subarray - current left(first) value + new right value 
+
+
+def fixed_sliding_window(arr: List[int], k: int) -> List[int]:
+    #sum first subarray and add it to the result 
+    curr_subarray = sum(arr[:k])
+    result = [curr_subarray]
+
+    #to get each subsequent subarray, add next value in the list
+    #and remove the first value 
+    for i in range(1, len(arr)-k+1):
+        curr_subarray = curr_subarray - arr[i-1]
+        curr_subarray = curr_subarray + arr[i+k-1]
+
+        result.append(curr_subarray)
+    return result
+
+
+Dynamically-Sized Sliding Window 
+
+shortest subarray with a sum that was greater than or equal to x 
+[1, 2, 3, 4, 5, 6] x = 7
+
+def dynamic_sliding_window(arr: List[int], x: int) -> int:
+    #track our min value
+    min_length = float('inf')
+
+    #current range and sum of our sliding window
+    start = 0
+    end = 0 
+    current_sum=0
+
+    #extend the sliding window until our criteria is method
+    while end < len(arr):
+        current_sum = current_sum + arr[end]
+        end = end + 1
+
+        #contract until it no longer meets our condition
+        while start < end and current_sum >= x:
+            current_sum = current_sum - arr[start]
+            start = start + 1
+
+            #update the min_length if this is shorter than the current one
+            min_length = min(min_length, end-start+1)
+
+    return min_length
+
+    #O(N)

@@ -1,0 +1,50 @@
+286. Walls and Gates
+
+You are given an m x n grid rooms initialized with these three possible values.
+
+    -1 A wall or an obstacle.
+    0 A gate.
+    INF Infinity means an empty room. We use the value 231 - 1 = 2147483647 to represent INF as you may assume that the distance to a gate is less than 2147483647.
+
+Fill each empty room with the distance to its nearest gate. If it is impossible to reach a gate, it should be filled with INF.
+
+BFS 
+store (x, y, and dist traveled from gate)
+- find gates - put into queue 
+- new tile, compare dist to grid[x][y] - curr position 
+    if dist is less than what we have already, override it 
+
+
+
+class Solution:
+    def wallsAndGates(self, rooms: List[List[int]]) -> None:
+
+        queue = collections.deque([])
+
+        rows = len(rooms)
+        cols = len(rooms[0])
+
+        for row in range(rows):
+            for col in range(cols):
+                if rooms[row][col] == 0:
+                    #a gate 
+                    queue.append((row, col, 0))
+        if not queue:
+            return
+        
+        directions = [(1,0), (-1,0). (0,1), (0,-1)]
+
+        while queue:
+            cur_row, cur_col, distance = queue.popleft()
+            if distance <= rooms[cur_row][cur_col]:
+                rooms[cur_row][cur_col] = distance
+
+                for row_inc, col_inc in directions:
+                    new_row = cur_row + row_inc
+                    new_col = cur_col + col_inc
+
+                    if(0 <= new_row < rows) and (0 <= new_col < cols) and rooms[new_row][new_col] != -1:
+                        queue.append((new_row, new_col, distance+1))
+        return
+
+    # O(M*N) + O(M*N) = 2*O(MN) = 0(MN)

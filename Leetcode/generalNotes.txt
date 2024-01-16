@@ -1,0 +1,12 @@
+
+    10 minutes, clarify assumptions, edge cases, define method. Define pattern:
+        straight forward
+        BFS / DFS
+        Flood fill
+        Brute Force
+        Backtracking
+        D.P
+        Greedy
+    10 minutes come up with a brute force solution.
+    20 minutes, code
+    5 minutes, test
